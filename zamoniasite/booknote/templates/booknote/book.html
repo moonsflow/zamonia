@@ -1,0 +1,30 @@
+{% extends 'booknote/base.html' %}
+
+{% block content %}
+
+    <h1>{{book.book_title}}</h1>
+    {% if book.book_author %}<h4>{{book.book_author}}</h4>{% endif %}
+
+
+    {% if book.cover_url %}<img class="book-cover" src="{{book.cover_url}}" alt="">{% endif %}
+
+    {% if book.isbn13 %}
+        <a class="btn" href="http://book.naver.com/search/search.nhn?query={{book.isbn13}}" target="_blank">learn more</a>
+    {% endif %}
+
+    {% if error_message %} <p>{{error_message}}</p> {% endif %}
+
+
+    {% if book.note_set.all %}
+    <ul class="title">
+        {% for note in book.note_set.all %}
+        <li>
+            <a href="{% url 'booknote:note' note.id %}">
+            {{forloop.counter}}. {{note.note_text}} p.{{note.book_page}}
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+{% endblock %}

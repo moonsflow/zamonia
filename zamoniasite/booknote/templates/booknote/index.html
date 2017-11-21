@@ -1,0 +1,32 @@
+{% extends 'booknote/base.html' %}
+
+{% block content %}
+    {% if books %}
+        <div class="books">
+        {% for book in books %}
+
+                <a href="{% url 'booknote:book' book.id %}">
+                    <div class="book">
+                        {% if book.cover_url %}
+                            <img class="book-cover" src="{{book.cover_url}}" alt="{{book.book_title}}">
+                        {% else %}
+                            <div class="book-placeholder"></div>
+                        {% endif %}
+                        <h2>{{book.book_title}}</h2>
+                        <ul class="tags">
+                            {% for tag in book.tags.all %}
+                            <li>
+                                {{tag}}
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </a>
+
+        {% endfor %}
+        </div>
+    {% else %}
+        <p>You don't have any book.</p>
+    {% endif %}
+
+{% endblock %}

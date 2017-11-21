@@ -1,0 +1,12 @@
+{% extends 'booknote/base.html' %}
+
+{% block content %}
+
+    {% if error_message %}<p>{{error_message}}</p>{% endif %}
+
+    <h1 class="title">{{note.note_text}}</h1>
+    <p>{{note.book_page}} page</p>
+
+    <p>{{note.book.book_title}} / {{note.book.book_author}}</p>
+
+{% endblock %}

@@ -1,0 +1,28 @@
+{% load static %}
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Booknote</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond|Lato:400,700" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'booknote/css/style.css' %}">
+    </head>
+    <body>
+        <header>
+            <nav>
+                <a href="{% url 'booknote:index' %}">books</a>&nbsp;-&nbsp;
+                <a href="{% url 'booknote:notes' %}">notes</a>&nbsp;-&nbsp;
+                <a href="/booknote/tags">tags</a>
+            </nav>
+        </header>
+        <main>
+            <div class="container">
+            {% block content %}
+            {% endblock %}
+        </div>
+        </main>
+    </body>
+</html>

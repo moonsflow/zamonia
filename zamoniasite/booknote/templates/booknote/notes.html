@@ -1,0 +1,17 @@
+{% extends 'booknote/base.html' %}
+
+{% block content %}
+
+    {% if notes %}
+    <ul class="title">
+        {% for note in notes %}
+        <li>
+            <a href="{% url 'booknote:note' note.id %}">
+            {{forloop.counter}} - {{note.note_text}}
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+{% endblock %}
